@@ -1,12 +1,7 @@
 pipeline {
        agent any
        stages {
-//                 stage("Cleaning Stage") {
-//                   steps {
-//                           //sh "mvn clean package "
-//                          sh "mvn package -DskipTests=true"
-//                         }
-//                   }
+
                   
                    stage("upload war to nexus3") {
                   steps {
