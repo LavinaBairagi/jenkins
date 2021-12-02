@@ -1,30 +1,24 @@
-pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine' 
-            args '-v /root/.m2:/root/.m2' 
-        }
+
+node {
+    stage('Preparation') { // for display purposes
+        // Get some code from a GitHub repository
+        git 'https://github.com/LavinaBairagi/jenkins.git'
+        
     }
-    stages {
-        stage('Build') { 
-            steps {
-                sh 'mvn -B -DskipTests clean package' 
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-        }
-        stage('Deliver') {
-            steps {
-                sh './jenkins/scripts/deliver.sh'
-            }
-        }
+    stage('Build') {
+                bat "mvn clean test"
     }
+    
+    stage('Package') {
+                bat "mvn package"
+    }
+    
+    stage('Nexus') {
+       nexusArtifactUploader artifacts: [[artifactId: 'jenkins',
+ classifier: '', file: 'target/jenkins.0.0.1-snapshot.jar',
+ type: 'jar']], credentialsId: 'nexus', groupId: 'com.maven.demo', 
+nexusUrl: 'localhost:8110', nexusVersion: 'nexus3',
+ protocol: 'http', 
+repository: 'http://localhost:8110/repository/maven-snapshots/',
+ version: '0.0.1'    }
 }
