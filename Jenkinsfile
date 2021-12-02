@@ -15,7 +15,7 @@ node {
     
     stage('Nexus') {
        nexusArtifactUploader artifacts: [[artifactId: 'jenkins',
- classifier: '', file: 'target/jenkins.0.0.1-snapshot.jar',
+ classifier: '', file: 'target/jenkins-0.0.1-SNAPSHOT.jar',
  type: 'jar']], credentialsId: 'nexus', groupId: 'com.maven.demo', 
 nexusUrl: 'localhost:8110', nexusVersion: 'nexus3',
  protocol: 'http', 
