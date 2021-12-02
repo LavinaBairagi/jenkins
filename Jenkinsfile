@@ -19,6 +19,6 @@ node {
  type: 'jar']], credentialsId: 'nexus', groupId: 'com.maven.demo', 
 nexusUrl: 'localhost:8110', nexusVersion: 'nexus3',
  protocol: 'http', 
-repository: 'http://localhost:8110/repository/maven-snapshots/',
+repository: 'http://localhost:8110/repository/maven-central-repository/',
  version: '0.0.1'    }
 }
