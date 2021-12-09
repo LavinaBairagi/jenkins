@@ -13,6 +13,11 @@ node {
                 bat "mvn package"
     }
     
+    stage('ansible-deploy'){
+        
+        ansiblePlaybook( inventory: 'inventory.inv', playbook: 'download.yml')
+    }
+    
     stage('Nexus') {
        nexusArtifactUploader artifacts: [[artifactId: 'jenkins',
  classifier: '', file: 'target/jenkins-0.0.1-SNAPSHOT.jar',
