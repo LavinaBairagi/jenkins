@@ -15,7 +15,7 @@ node {
     
     stage('ansible-deploy'){
         
-        ansiblePlaybook( inventory: 'inventory.inv', playbook: 'download.yml')
+       ansiblePlaybook( credentialsId: 'project-key', disableHostKeyChecking: true, installation: 'ansible', inventory: 'inventory.inv', playbook: 'download.yml')
     }
     
     stage('Nexus') {
