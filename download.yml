@@ -1,10 +1,9 @@
--
- hosts: all
- tasks:
-  - maven_artifact:
-      group_id: com.jenkins.nexus
-      artifact_id: nexus-jenkins
-      repository_url: "http://localhost:8110/#browse/browse:maven-central-repository"
-      username: admin
-      password: 12345
-      dest: /project
+- hosts: all
+  tasks:
+    - maven_artifact:
+        group_id: com.maven.demo
+        artifact_id: jenkins
+        repository_url: 'http://host.docker.internal:8110/repository/nexusdeploymentrepo/'
+        username: admin
+        password: 123456
+        dest: /download
