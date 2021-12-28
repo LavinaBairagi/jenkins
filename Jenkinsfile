@@ -7,8 +7,7 @@ node {
     }
    stage('ansible-deploy'){
         
-       ansiblePlaybook(credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'ansible2', inventory: 'inventory.inv', playbook: 'download.yml')
-    }
+       ansiblePlaybook(credentialsId: 'private-key', disableHostKeyChecking: true,installation: 'ansible2', inventory: 'ineventory.inv', playbook: 'download.yml'}
     
    
 }
