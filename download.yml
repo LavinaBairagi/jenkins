@@ -1,9 +1,10 @@
-- hosts: 172.17.0.3
+- hosts: all
+  become: yes
   tasks:
-    - maven_artifact:
-        group_id: com.maven.demo
-        artifact_id: jenkins
-        repository_url: 'http://host.docker.internal:8110/repository/nexusdeploymentrepo/'
-        username: admin
-        password: 123456
-        dest: /download
+  - name: Stop and Start ssh
+    service:
+      name: ssh
+      state: "{{ item }}"
+    with_items:
+      - stopped
+      - started
