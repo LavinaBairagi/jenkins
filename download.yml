@@ -1,10 +1,18 @@
-- hosts: all
-  become: yes
+---
+-
+  hosts: all
   tasks:
-  - name: Stop and Start ssh
-    service:
-      name: ssh
-      state: "{{ item }}"
-    with_items:
-      - stopped
-      - started
+    -
+      apt:
+        update_cache: true
+      become: true
+      name: "Update APT package manager repositories cache"
+    -
+      apt:
+        name: "{{ packages }}"
+        state: present
+      become: true
+      name: "Install Java using Ansible"
+      vars:
+        packages:
+          - openjdk-8-jdk
