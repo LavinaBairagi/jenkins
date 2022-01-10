@@ -5,7 +5,7 @@ node {
         git 'https://github.com/LavinaBairagi/jenkins.git'
         
     }
-   stage('ansible-deploy'){
+   stage('Ansible'){
         
 ansiblePlaybook(credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ineventory.inv', playbook: 'download.yml')    
    }
