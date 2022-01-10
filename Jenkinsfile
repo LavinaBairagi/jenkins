@@ -7,6 +7,6 @@ node {
     }
    stage('Ansible'){
         
-ansiblePlaybook(credentialsId: 'private-key', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'ineventory.inv', playbook: 'download.yml')    
+ansiblePlaybook(credentialsId: 'id_rsa', disableHostKeyChecking: true, installation: 'Ansible', inventory: 'inventory.inv', playbook: 'download.yml')    
    }
 }
